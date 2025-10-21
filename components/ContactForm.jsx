@@ -60,12 +60,16 @@ export default function ContactForm() {
     setSubmitStatus(null)
 
     try {
-      const response = await fetch('/api/contact', {
+      // Use Netlify Forms
+      const formData = new FormData()
+      formData.append('form-name', 'contact')
+      formData.append('name', formData.get('name'))
+      formData.append('email', formData.get('email'))
+      formData.append('message', formData.get('message'))
+
+      const response = await fetch('/', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        body: formData,
       })
 
       if (response.ok) {
@@ -106,7 +110,21 @@ export default function ContactForm() {
           {/* Contact Form */}
           <motion.div variants={formVariants}>
             <div className="card max-w-2xl mx-auto">
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form 
+                name="contact" 
+                method="POST" 
+                data-netlify="true" 
+                data-netlify-honeypot="bot-field"
+                onSubmit={handleSubmit} 
+                className="space-y-6"
+              >
+                {/* Hidden field for Netlify */}
+                <input type="hidden" name="form-name" value="contact" />
+                <div style={{ display: 'none' }}>
+                  <label>
+                    Don't fill this out if you're human: <input name="bot-field" />
+                  </label>
+                </div>
                 {/* Name Field */}
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-foreground">
