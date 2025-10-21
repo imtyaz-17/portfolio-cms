@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Portfolio CMS Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    html, body, #sanity {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="sanity"></div>
+  <script type="module">
+    import { createRoot } from 'react-dom/client'
+    import { NextStudio } from 'next-sanity/studio'
+    import config from './studio.config.js'
+
+    const root = createRoot(document.getElementById('sanity'))
+    root.render(NextStudio({ config }))
+  </script>
+</body>
+</html>

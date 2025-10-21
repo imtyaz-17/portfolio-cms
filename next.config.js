@@ -14,6 +14,10 @@ const nextConfig = {
     ],
   },
   serverExternalPackages: ['@sanity/vision'],
+  // Skip studio route during static export
+  generateBuildId: async () => {
+    return 'build-' + Date.now()
+  },
 }
 
 module.exports = nextConfig

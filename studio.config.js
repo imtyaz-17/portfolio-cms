@@ -1,15 +1,12 @@
-'use client'
-
-import { NextStudio } from 'next-sanity/studio'
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
-import personalInfo from '@/sanity/schemas/personalInfo'
-import project from '@/sanity/schemas/project'
-import skill from '@/sanity/schemas/skill'
-import experience from '@/sanity/schemas/experience'
+import personalInfo from './sanity/schemas/personalInfo'
+import project from './sanity/schemas/project'
+import skill from './sanity/schemas/skill'
+import experience from './sanity/schemas/experience'
 
-const config = defineConfig({
+export default defineConfig({
   name: 'portfolio-cms',
   title: 'Portfolio CMS',
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
@@ -46,7 +43,3 @@ const config = defineConfig({
     types: [personalInfo, project, skill, experience],
   },
 })
-
-export default function StudioPage() {
-  return <NextStudio config={config} />
-}
