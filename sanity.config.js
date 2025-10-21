@@ -1,13 +1,16 @@
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
-import { schemaTypes } from './sanity/schema'
+import personalInfo from './sanity/schemas/personalInfo'
+import project from './sanity/schemas/project'
+import skill from './sanity/schemas/skill'
+import experience from './sanity/schemas/experience'
 
 export default defineConfig({
   name: 'portfolio-cms',
   title: 'Portfolio CMS',
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  projectId: '3s1726oo',
+  dataset: 'production',
   basePath: '/studio',
   plugins: [
     structureTool({
@@ -37,7 +40,7 @@ export default defineConfig({
     visionTool(),
   ],
   schema: {
-    types: schemaTypes,
+    types: [personalInfo, project, skill, experience],
   },
 })
 
