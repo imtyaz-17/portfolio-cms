@@ -115,7 +115,7 @@ body {
   border-radius: calc(var(--radius) + 0.25rem);
   border: 1px solid var(--color-border);
   background-color: var(--color-card);
-  padding: 1.5rem;
+  padding: .5rem;
   color: var(--color-card-foreground);
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   transition: all 0.2s ease-in-out;
